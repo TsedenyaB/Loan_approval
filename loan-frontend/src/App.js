@@ -28,7 +28,8 @@ function App() {
     setLoading(true);
     setPrediction(null);
 
-    const response = await fetch("http://127.0.0.1:8000/api/predict/", {
+    const apiUrl = process.env.REACT_APP_API_URL || "http://127.0.0.1:8000";
+    const response = await fetch(`${apiUrl}/api/predict/`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
